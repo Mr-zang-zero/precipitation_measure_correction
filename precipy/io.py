@@ -3,11 +3,17 @@
 tools for reading and writing files
 """
 
+from glob import glob
 from datetime import datetime, timedelta
 from os import path
 
 import numpy as np
 import pandas as pd
+
+
+DEFAULT_DATA_DIR = path.expanduser('~/data')
+DEFAULT_PLUVIO_DIR = path.join(DEFAULT_DATA_DIR, 'pluvio')
+DEFAULT_PKL_FILE = path.join(DEFAULT_DATA_DIR, 'pluvio.pkl')
 
 
 def _parse_date(datestr, hourstr):
@@ -43,4 +49,19 @@ def read_csv(datafile):
     data['station'] = int(path.basename(datafile)[0:4])
     data.set_index(['station'], append=True, inplace=True)
     return data.reorder_levels(['station', 'time'])
+
+
+def read_all_raw(datadir=DEFAULT_PLUVIO_DIR):
+    """Read all pluvio data."""
+    files = glob(path.join(datadir, '*.dat'))
+    droplist = ['ws1', 'ws2', 'ws3', 'wd1', 'wd2', 'wd3', 'rh', 'frac_s']
+    dats = []
+    for f in files:
+        print(f)
+        dats.append(read_csv(f).drop(droplist, axis=1))
+    return pd.concat(dats).sort_index()
+
+
+def read_pickle(pkl_file=DEFAULT_PKL_FILE):
+    return pd.read_pickle(pkl_file)
 
