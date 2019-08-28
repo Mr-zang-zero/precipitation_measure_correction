@@ -31,8 +31,8 @@ def plot1(ax):
 if __name__ == '__main__':
     plt.close('all')
     datafile = path.expanduser('~/data/2002_2014.dat')
-    data = io.read_csv(datafile)
-    data = data[data.tot_raw>0].copy()
+    #data = io.read_csv(datafile)
+    #data = data[data.tot_raw>0].copy()
     ax1 = data.plot.scatter('s_raw', 's_kor', c='w', cmap=CMAP_DEFAULT)
     plot1(ax1)
     tdata = data.loc[:,['s_raw', 'w', 't']]
