@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 
-TF_PARAMS_FILE = path.expanduser('~/koodi/sadekorjaus/tf_params.csv')
+TF_PARAMS_FILE = path.join(path.dirname(__file__), 'tf_params.csv')
 
 
 def ce_exp(u, a, b, c):

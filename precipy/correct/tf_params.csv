@@ -1,0 +1,9 @@
+key,a,b,c,u_thresh,eq,source
+da_gh_mixd,0.982,0.0201,0.0,6.1,exp,spice18 table S2
+da_gh_solid,0.829,0.213,0.32,6.1,exp,spice18 table S2
+da_gh,0.0404,0.4247,0.0,6.1,k17a,spice18 table S2
+da_10m_mixd,0.98,0.0137,0.0,8.0,exp,spice18 table S2
+da_10m_solid,0.886,0.143,0.25,8.0,exp,spice18 table S2
+da_10m,0.0312,0.427,0.0,8.0,k17a,spice18 table S2
+sa_gh,0.0348,1.366,0.779,7.2,k17a,k17a table 2
+sa_10m,0.0281,1.628,0.837,9.0,k17a,k17a table 2
