@@ -17,6 +17,7 @@ def _read_tf_params(params_file=TF_PARAMS_FILE, key='sa_gh'):
 
 
 TF_PARAMS_GH = _read_tf_params()
+TF_PARAMS_GH_EXP = _read_tf_params(key='sa_gh_exp_s')
 
 
 def ce_exp(u, a, b, c):
@@ -29,13 +30,14 @@ def ce_k17a(u, t, a, b, c):
     return np.exp(-a*u*(1-np.arctan(b*t)+c))
 
 
-def ce_spice18(u, t=None, p=TF_PARAMS_GH):
+def ce_spice18(u, t=None, p_vt=TF_PARAMS_GH, p_v=TF_PARAMS_GH_EXP):
     """CE based on SPICE18 recommendation"""
+    p = p_v if t is None else p_vt
     u = u if (u < p.u_thresh) else p.u_thresh
     abc = p.loc[['a', 'b', 'c']].values
     if t is not None:
         return ce_k17a(u, t, *abc)
-    raise NotImplementedError
+    return ce_exp(u, *abc)
 
 
 def correct_sa_data(dat):

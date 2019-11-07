@@ -44,5 +44,5 @@ if __name__ == '__main__':
     for ax in [axarr[0,0], axarr[0,1]]:
         ax.set_xlabel('')
     for ax in [axarr[1,0], axarr[1,1]]:
-        ax.set_xlabel('korjaamaton, mm')
+        ax.set_xlabel('korjaamaton tuntisadanta, mm')
     fig.tight_layout()
