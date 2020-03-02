@@ -30,7 +30,7 @@ def _parse_wd(wd):
     return np.uint16(wd)
 
 
-def read_csv(datafile, **kws):
+def read_csv(datafile, incl_station=True, **kws):
     header = ('date', 'hour',
               's_sov', 'l_sov', 'tot_sov', # korjattu ja sovitettu
               's_kor', 'l_kor', 'tot_kor', # korjattu
@@ -47,12 +47,14 @@ def read_csv(datafile, **kws):
                        parse_dates={'time': ['date', 'hour']},
                        date_parser=_parse_date, index_col='time',
                        **kws).dropna()
-    try:
-        data['station'] = int(path.basename(datafile)[0:4])
-        data.set_index(['station'], append=True, inplace=True)
-        return data.reorder_levels(['station', 'time'])
-    except ValueError:
-        return data
+    if incl_station:
+        try:
+            data['station'] = int(path.basename(datafile)[0:4])
+            data.set_index(['station'], append=True, inplace=True)
+            return data.reorder_levels(['station', 'time'])
+        except ValueError:
+            pass
+    return data
 
 
 def read_all_raw(datadir=DEFAULT_PLUVIO_DIR):
