@@ -16,7 +16,7 @@ DEFAULT_PLUVIO_DIR = path.join(DEFAULT_DATA_DIR, 'pluvio')
 DEFAULT_PKL_FILE = path.join(DEFAULT_DATA_DIR, 'pluvio.pkl')
 
 
-def _parse_date(datestr, hourstr):
+def parse_date(datestr, hourstr):
     try:
         return datetime.strptime(datestr, '%Y%m%d') + timedelta(hours=int(hourstr))
     except ValueError:
@@ -45,7 +45,7 @@ def read_csv(datafile, incl_station=True, **kws):
     data = pd.read_csv(datafile, names=header, comment='*',
                        delim_whitespace=True, converters=converters,
                        parse_dates={'time': ['date', 'hour']},
-                       date_parser=_parse_date, index_col='time',
+                       date_parser=parse_date, index_col='time',
                        **kws).dropna()
     if incl_station:
         try:
