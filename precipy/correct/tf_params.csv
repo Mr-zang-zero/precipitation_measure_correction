@@ -1,11 +1,14 @@
-key,a,b,c,u_thresh,eq,source
-da_gh_mixd,0.982,0.0201,0.0,6.1,exp,spice18 table S2
-da_gh_solid,0.829,0.213,0.32,6.1,exp,spice18 table S2
-da_gh,0.0404,0.4247,0.0,6.1,k17a,spice18 table S2
-da_10m_mixd,0.98,0.0137,0.0,8.0,exp,spice18 table S2
-da_10m_solid,0.886,0.143,0.25,8.0,exp,spice18 table S2
-da_10m,0.0312,0.427,0.0,8.0,k17a,spice18 table S2
-sa_gh,0.0348,1.366,0.779,7.2,k17a,k17a table 2
-sa_10m,0.0281,1.628,0.837,9.0,k17a,k17a table 2
-sa_gh_exp_s,0.728,0.230,0.336,7.2,exp,k17a table 3
-sa_gh_exp_m,0.668,0.132,0.339,7.2,exp,k17a table 3
+key,a,b,c,d,u_max,t_min,eq,source
+da_gh_mixd,0.982,0.0201,0.0,,6.1,,exp,spice18 table S2
+da_gh_solid,0.829,0.213,0.32,,6.1,,exp,spice18 table S2
+da_gh,0.0404,0.4247,0.0,,6.1,,k17a,spice18 table S2
+da_10m_mixd,0.98,0.0137,0.0,,8.0,,exp,spice18 table S2
+da_10m_solid,0.886,0.143,0.25,,8.0,,exp,spice18 table S2
+da_10m,0.0312,0.427,0.0,,8.0,,k17a,spice18 table S2
+sa_gh,0.0348,1.366,0.779,,7.2,,k17a,k17a table 2
+sa_10m,0.0281,1.628,0.837,,9.0,,k17a,k17a table 2
+sa_gh_exp_s,0.728,0.230,0.336,,7.2,,exp,k17a table 3
+sa_gh_exp_m,0.668,0.132,0.339,,7.2,,exp,k17a table 3
+wild,-0.08871,0.16146,0.011276,-0.00877,7.0,-12.0,old,rt9
+tretjakov,-0.04816,0.13383,0.009064,-0.005147,7.0,-12.0,old,rt9
+hh,-0.07556,0.10999,0.012214,-0.007071,7.0,-12.0,old,rt9
